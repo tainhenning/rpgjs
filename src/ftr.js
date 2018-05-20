@@ -15,6 +15,7 @@ function ftr(posx, posy, max, min, velx, vely)
 	, posx, posy);
 	obj.vx = velx;
 	obj.vy = vely;
+
 	obj.playAnimation([4,5]);
 	return obj;
 }

@@ -8,7 +8,8 @@ function player()
 		"scr1_bk1.gif", "scr1_bk2.gif"
 	]
 	, 350, 350);
-
+	sprite.width = 32;
+	sprite.height = 32;
 	sprite.vy = 0;
 	sprite.vx = 0;
 
@@ -17,7 +18,7 @@ function player()
 function playerMovement()
 {
 	left.press = () => {
-		sprite.vx = -5;
+		sprite.vx = -2;
 		sprite.vy = 0;
 		sprite.playAnimation([2,3]);
 
@@ -31,7 +32,7 @@ function playerMovement()
 	};
 
 	up.press = () => {
-		sprite.vy = -5;
+		sprite.vy = -2;
 		sprite.vx = 0;
 		sprite.playAnimation([6,7]);
 	};
@@ -42,7 +43,7 @@ function playerMovement()
 		}
 	};
 	right.press = () => {
-		sprite.vx = 5;
+		sprite.vx = 2;
 		sprite.vy = 0;
 		sprite.playAnimation([4,5]);
 	};
@@ -53,7 +54,7 @@ function playerMovement()
 		}
 	};
 	down.press = () => {
-		sprite.vy = 5;
+		sprite.vy = 2;
 		sprite.vx = 0;
 		sprite.playAnimation([0,1]);
 	};

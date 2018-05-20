@@ -3,23 +3,7 @@ function setup()
 	player();
 	fighter = ftr(600, 600, 620, 550, 1, 0);
 
-	for(var i = 0; i < grid.length; i++)
-	{
-		for(var j = 0; j < grid[i].length; j++)
-		{
-			let rectangle = new PIXI.Graphics();
-			if(grid[i][j] != 1) 
-			{
-				rectangle.beginFill(0x000000);
-			}
-			else 
-				rectangle.beginFill(0x470a72)
-			rectangle.drawRect((32) * j, (32) * i , 32, 32);
-			rectangle.endFill();
-			app.stage.addChild(rectangle);
-		}
-	}
-
+	loadGrid();
 	app.stage.addChild(fighter);
 	app.stage.addChild(sprite);
 	state = play;
@@ -50,4 +34,37 @@ function play(delta)
 		sprite.vx = 0;
 	}
 	fighterMovement(fighter);
+}
+
+function loadGrid()
+{
+	for(var i = 0; i < grid.length; i++)
+	{
+		for(var j = 0; j < grid[i].length; j++)
+		{
+			if(grid[i][j] == 1) 
+			{
+				let id = PIXI.loader.resources["./src/lib/floorsheet.json"].textures; 		
+				let wall = new Sprite(id["floor_vines0.png"]);
+				wall.y = 32 * i;
+				wall.x = 32 * j;	
+				wall.width = 32;
+				wall.height = 32;
+				app.stage.addChild(wall);
+
+			}
+			else if(grid[i][j] == 0)
+			{
+				let id = PIXI.loader.resources["./src/lib/floorsheet.json"].textures; 		
+				let floor = new Sprite(id["crystal_floor2.png"]);
+				floor.y = 32 * i;
+				floor.x = 32 * j;	
+				floor.width = 32;
+				floor.height = 32;
+				app.stage.addChild(floor);
+			}
+
+
+		}
+	}
 }
