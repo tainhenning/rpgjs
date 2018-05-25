@@ -1,12 +1,22 @@
+let currentGrid, previousScene, thisScene, battleBool;
 function setup()
 {
-	player();
-	fighter = ftr(600, 600, 620, 550, 1, 0);
+	battleBool = false;
+	scene1 = new PIXI.DisplayObjectContainer();
 
-	loadGrid();
-	app.stage.addChild(fighter);
-	app.stage.addChild(sprite);
+	sprite = player(sprite,scene1, (window.innerWidth - 32)/2, (window.innerHeight - 32)/2);
+
+	scene1 = loadGrid(grid, scene1);
+	scene1.addChild(sprite);
+	scene1.vx = 0;
+	scene1.vy = 0;
+
+
+	app.stage.addChild(scene1);
+
+	currentGrid = grid;
 	state = play;
+
 	app.ticker.add(delta => gameLoop(delta))
 }
 
@@ -17,54 +27,34 @@ function gameLoop(delta)
 }
 function play(delta)
 {
-	b.hit(sprite, fighter, true);
-	let prevx = sprite.x;
-	let prevy = sprite.y;
-	sprite.x += sprite.vx;
-	sprite.y += sprite.vy;
-	let cgx = Math.ceil(sprite.x/32);
-	let cgy = Math.ceil(sprite.y/32);
-	let fgx = Math.floor(sprite.x/32);
-	let fgy = Math.floor(sprite.y/32);
-	if(grid[fgy][fgx] == 1 || grid[cgy][fgx] == 1 || grid[cgy][cgx] == 1 || grid[fgy][cgx] == 1) //bottom right
+	if(battleBool == false)
 	{
-		sprite.x = prevx;
-		sprite.y = prevy;
-		sprite.vy = 0;
-		sprite.vx = 0;
+		playerMovement(sprite,scene1);
 	}
-	fighterMovement(fighter);
-}
 
-function loadGrid()
-{
-	for(var i = 0; i < grid.length; i++)
+	wallDetection(scene1);
+	if((sprite.vx != 0 || sprite.vy != 0) && !battleBool)
 	{
-		for(var j = 0; j < grid[i].length; j++)
+		battleChance = Math.floor(Math.random() * 100);
+		if(battleChance == 1)
 		{
-			if(grid[i][j] == 1) 
-			{
-				let id = PIXI.loader.resources["./src/lib/floorsheet.json"].textures; 		
-				let wall = new Sprite(id["floor_vines0.png"]);
-				wall.y = 32 * i;
-				wall.x = 32 * j;	
-				wall.width = 32;
-				wall.height = 32;
-				app.stage.addChild(wall);
-
-			}
-			else if(grid[i][j] == 0)
-			{
-				let id = PIXI.loader.resources["./src/lib/floorsheet.json"].textures; 		
-				let floor = new Sprite(id["crystal_floor2.png"]);
-				floor.y = 32 * i;
-				floor.x = 32 * j;	
-				floor.width = 32;
-				floor.height = 32;
-				app.stage.addChild(floor);
-			}
-
-
+			battleBool = true;
+			scene2 = battleSetup();
+			scene1.visible = false;
+			scene2.visible = true;
+			en = enemy();
+			scene2.addChild(en);
+			eHealth = new PIXI.Text(getEnemyHealth().toString(), nonhighlight);
+			eHealth.position.set(50,50);
+			scene2.addChild(eHealth);
+			pHealth = new PIXI.Text(getPlayerHealth().toString(), highlight);
+			pHealth.position.set((25*32)/2 + 50,(25*32) - (25*32)/3 + 5);
+			scene2.addChild(pHealth);
+			app.stage.addChild(scene2);
+			
+			menuMovement();
 		}
 	}
+	if(battleBool)
+		menuMovement();
 }
