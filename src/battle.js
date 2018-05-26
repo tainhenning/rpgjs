@@ -1,11 +1,13 @@
 let fight, defend, item, run, highlight, nonhighlight, positionSelected, executed, 
-	enemyHealth, enemyAttack, playerHealth, playerAttack;
+	enemyHealth, enemyAttack, playerHealth, playerAttack, playerDefense;
 function battleSetup(scene)
 {
 	enemyHealth = 0;
 	enemyAttack = 0;
 	playerHealth = 50;
 	playerAttack = 1;
+	playerDefense = 0;
+
 	executed = false;
 	scene = new PIXI.DisplayObjectContainer();
 	textBox = new PIXI.Graphics();
@@ -17,14 +19,6 @@ function battleSetup(scene)
 	commandBox.beginFill(0xfff);
 	commandBox.drawRect(0,(25*32) - (25*32)/3,25*16,(25*32)/3);
 	commandBox.endFill();
-
-	highlight = new PIXI.TextStyle({
-		fill: "white"
-	});
-	nonhighlight = new PIXI.TextStyle({
-		fill: "black"
-	});
-
 
 	fight = new PIXI.Text("Fight", nonhighlight);
 	fight.position.set(50,(25*32) - (25*32)/3 + 5);
@@ -49,82 +43,6 @@ function battleSetup(scene)
 	scene.addChild(run);
 
 	return scene;
-}
-function highlighted(text)
-{
-	text.style = highlight;
-}
-function delighted(text)
-{
-	text.style = nonhighlight;
-}
-function menuMovement()
-{
-	let returning = false;
-	mUp.press = () => {
-		positionSelected--;
-	}
-	mDown.press = () => {
-		positionSelected++;
-	}
-
-	enter.press = () => {
-		executed = true;
-	}
-	if(positionSelected == 0)
-		positionSelected = 4;
-	if(positionSelected == 5)
-		positionSelected = 1;
-	switch(positionSelected)
-	{
-		case 1:
-			highlighted(fight);
-			delighted(defend);
-			delighted(item);
-			delighted(run);
-			if(executed == true)
-			{
-				executed = false;
-				enemyHealth--;
-				eHealth.text = enemyHealth.toString();
-				enemyTurn();
-				pHealth.text = playerHealth.toString();
-				if(enemyHealth == 0)
-				{
-					scene1.visible = true;
-					app.stage.removeChild(scene2);
-					battleBool = false;
-				}
-			}
-			break;
-		case 2:
-			highlighted(defend);
-			delighted(fight);
-			delighted(item);
-			delighted(run);
-			break;
-		case 3:
-			highlighted(item);
-			delighted(defend);
-			delighted(fight);
-			delighted(run);
-			break;
-		case 4:
-			highlighted(run);
-			delighted(defend);
-			delighted(item);
-			delighted(fight);
-			if(executed == true)
-			{
-				executed = false;
-				scene1.visible = true;
-				app.stage.removeChild(scene2);
-				battleBool = false;
-			}
-			break;
-		default:
-			break;
-	}
 }
 
 function enemy(scene)
@@ -177,12 +95,11 @@ function getPlayerHealth()
 }
 function enemyTurn()
 {
-	enemyChoice = Math.floor(Math.random() * 3);
-	playerHealth--;
+	enemyChoice = Math.floor(Math.random() * 1);
 	switch(enemyChoice)
 	{
 		case 0:
-			playerHealth = playerHealth - enemyAttack;
+			playerHealth = (playerHealth + playerDefense) - enemyAttack;
 			break;
 		default:
 			break;

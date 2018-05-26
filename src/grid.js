@@ -1,3 +1,4 @@
+
 function loadGrid(gGrid, scene)
 {
 	for(var i = 0; i < gGrid.length; i++)

@@ -17,7 +17,7 @@ function player(user,scene, x, y)
 function playerMovement(user, scene)
 {
 	left.press = () => {
-		if(battleBool == false)
+		if(!menu.visible && !battleBool)
 		{
 			scene.vx = 2;
 			scene.vy = 0;
@@ -36,7 +36,7 @@ function playerMovement(user, scene)
 	};
 
 	up.press = () => {
-		if(battleBool == false)
+		if(!menu.visible && !battleBool)
 		{
 			scene.vy = 2;
 			user.vy = -2;
@@ -53,7 +53,7 @@ function playerMovement(user, scene)
 		}
 	};
 	right.press = () => {
-		if(battleBool == false)
+		if(!menu.visible && !battleBool)
 		{
 			scene.vx = -2;
 			user.vx = 2;
@@ -70,7 +70,7 @@ function playerMovement(user, scene)
 		}
 	};
 	down.press = () => {
-		if(battleBool == false)
+		if(!menu.visible && !battleBool)
 		{
 			user.vy = 2;
 			user.vx = 0;
@@ -85,6 +85,16 @@ function playerMovement(user, scene)
 		  user.vy = 0;
 		  scene.vy = 0;
 		  user.stopAnimation();
+		}
+	};
+	spacebar.press = () => {
+		if(!menu.visible && !battleBool)
+		{
+			menu.visible = true;
+		}
+		else
+		{
+			menu.visible = false;
 		}
 	};
 }
