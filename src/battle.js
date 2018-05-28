@@ -4,9 +4,10 @@ function battleSetup(scene)
 {
 	enemyHealth = 0;
 	enemyAttack = 0;
-	playerHealth = 50;
-	playerAttack = 1;
-	playerDefense = 0;
+
+	playerHealth = getPlayerHealth();
+	playerAttack = getPlayerAttack();
+	playerDefense = getPlayerDefense();
 
 	executed = false;
 	scene = new PIXI.DisplayObjectContainer();
@@ -88,10 +89,6 @@ function enemy(scene)
 function getEnemyHealth()
 {
 	return enemyHealth;
-}
-function getPlayerHealth()
-{
-	return playerHealth;
 }
 function enemyTurn()
 {

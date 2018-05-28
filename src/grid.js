@@ -28,6 +28,8 @@ function loadGrid(gGrid, scene)
 			}
 		}
 	}
+	scene.vx = 0;
+	scene.vy = 0;
 	return scene;
 }
 function wallDetection(scene)

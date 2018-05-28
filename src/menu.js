@@ -16,7 +16,7 @@ function battleMenuMovement()
 		positionSelected++;
 	}
 
-	enter.press = () => {
+	spacebar.press = () => {
 		executed = true;
 	}
 	if(positionSelected == 0)
@@ -84,21 +84,21 @@ function battleMenuMovement()
 }
 function mainMenuMovement()
 {
-	executed = false;
+	execute = false; 
 	mUp.press = () => {
-		mainMenuPosition--;
+		if(mainMenu.visible && !statusBox.visible)
+			mainMenuPosition--;
 	}
 	mDown.press = () => {
-		mainMenuPosition++;
+		if(mainMenu.visible && !statusBox.visible)
+			mainMenuPosition++;
 	}
 
-	enter.press = () => {
-
-	}
 	if(mainMenuPosition == 0)
 		mainMenuPosition = 4;
 	if(mainMenuPosition == 5)
 		mainMenuPosition = 1;
+
 	switch(mainMenuPosition)
 	{
 		case 1: 
@@ -126,4 +126,18 @@ function mainMenuMovement()
 			delighted(equipText);
 			break;			
 	}
+	spacebar.press = () => {
+		if(mainMenu.visible)
+		{
+			switch(mainMenuPosition)
+			{
+				case 1:
+					statusBox.visible = true;
+			}
+		}
+	}
+}
+function statusBoxMovement()
+{
+
 }

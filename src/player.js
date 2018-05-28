@@ -1,5 +1,8 @@
 function player(user,scene, x, y)
 {
+	playerHealth = 50;
+	playerAttack = 1;
+	playerDefense = 4;
 	user = u.sprite(
 	[
 		"scr1_fr1.gif", "scr1_fr2.gif",
@@ -17,7 +20,7 @@ function player(user,scene, x, y)
 function playerMovement(user, scene)
 {
 	left.press = () => {
-		if(!menu.visible && !battleBool)
+		if(!mainMenu.visible && !battleBool)
 		{
 			scene.vx = 2;
 			scene.vy = 0;
@@ -36,7 +39,7 @@ function playerMovement(user, scene)
 	};
 
 	up.press = () => {
-		if(!menu.visible && !battleBool)
+		if(!mainMenu.visible && !battleBool)
 		{
 			scene.vy = 2;
 			user.vy = -2;
@@ -53,7 +56,7 @@ function playerMovement(user, scene)
 		}
 	};
 	right.press = () => {
-		if(!menu.visible && !battleBool)
+		if(!mainMenu.visible && !battleBool)
 		{
 			scene.vx = -2;
 			user.vx = 2;
@@ -70,7 +73,7 @@ function playerMovement(user, scene)
 		}
 	};
 	down.press = () => {
-		if(!menu.visible && !battleBool)
+		if(!mainMenu.visible && !battleBool)
 		{
 			user.vy = 2;
 			user.vx = 0;
@@ -87,14 +90,33 @@ function playerMovement(user, scene)
 		  user.stopAnimation();
 		}
 	};
-	spacebar.press = () => {
-		if(!menu.visible && !battleBool)
+	tab.press = () => {
+		if(!mainMenu.visible && !battleBool)
 		{
-			menu.visible = true;
+			mainMenu.visible = true;
+		}
+		else if(mainMenu.visible && statusBox.visible)
+		{
+			statusBox.visible = false;
 		}
 		else
 		{
-			menu.visible = false;
+			mainMenu.visible = false;
 		}
 	};
+}
+
+function getPlayerHealth()
+{
+	return playerHealth;
+}
+
+function getPlayerAttack()
+{
+	return playerAttack;
+}
+
+function getPlayerDefense()
+{
+	return playerDefense;
 }

@@ -4,13 +4,15 @@ let type = "WebGL",
 	loader = PIXI.loader,
 	resources = PIXI.loader.resources,
 	Sprite = PIXI.Sprite;
-let left = keyboard(37),
-	up = keyboard(38),
-	right = keyboard(39),
-	mUp = keyboard(38),
-	enter = keyboard(13),
-	mDown = keyboard(40),
-	down = keyboard(40);
+let left = keyboard(65),
+	up = keyboard(87),
+	right = keyboard(68),
+	down = keyboard(83);
+	
+	mUp = keyboard(87),
+	mDown = keyboard(83),
+
+	tab = keyboard(9),
 	spacebar = keyboard(32);
 let app = new PIXI.Application(
 	{width: 256, height: 256, antialias: true, transparent: false, resolution: 1});
