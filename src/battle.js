@@ -49,7 +49,7 @@ function battleSetup(scene)
 function enemy(scene)
 {
 	let enemy = new PIXI.Graphics();
-	enemyChance = Math.floor(Math.random() * 5);
+	enemyChance = Math.floor(Math.random() * 1000);
 	if(enemyChance == 1)
 	{
 		enemy.beginFill(0xf49d41);
