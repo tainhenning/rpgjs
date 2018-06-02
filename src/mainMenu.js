@@ -28,6 +28,8 @@ function mainMenuSetup()
 	mainMenuPosition = 1;
 
 	menu.visible = false;
+	statusBox = statusBoxSetup();
+	menu.addChild(statusBox);
 	return menu;
 
 }

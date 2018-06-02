@@ -1,4 +1,4 @@
-let currentGrid, battleBool, mainMenuPosition;
+let currentGrid, battleBool, mainMenuPosition, currentScene;
 
 highlight = new PIXI.TextStyle({
 	fill: "white"
@@ -6,28 +6,26 @@ highlight = new PIXI.TextStyle({
 nonhighlight = new PIXI.TextStyle({
 	fill: "black"
 });
-
 function setup()
 {
 	
 	battleBool = false;
-	scene1 = new PIXI.DisplayObjectContainer();
-
-	sprite = player(sprite,scene1, (window.innerWidth - 32)/2, (window.innerHeight - 32)/2);
-
-	scene1 = loadGrid(grid, scene1);
+	let scene3, scene1;
+	sprite = player(sprite, (1000 - 32)/2, (1000 - 32)/2);
+	scene3 = defineScene(grid2, null, null, null, null, 500, 250);
+	scene1 = defineScene(grid, null, scene3, null, null, (window.innerWidth - 32)/2, (window.innerHeight - 32)/2);
+	scene3.leftScene = scene1;
 	scene1.addChild(sprite);
+
+	scene3.visible = false;
 
 	mainMenu = mainMenuSetup();
 
-	statusBox = statusBoxSetup();	
-	mainMenu.addChild(statusBox);
-
+	app.stage.addChild(scene3);
 	app.stage.addChild(scene1);
 	app.stage.addChild(mainMenu);
 
-
-	currentGrid = grid;
+	currentScene = scene1;
 	state = play;
 	app.ticker.add(delta => gameLoop(delta))
 }
@@ -41,18 +39,19 @@ function play(delta)
 {
 	if(!battleBool)
 	{
-		playerMovement(sprite,scene1);
+		playerMovement(sprite,currentScene);
 	}
 
-	wallDetection(scene1);
+	wallDetection(currentScene);
+
 	if((sprite.vx != 0 || sprite.vy != 0) && !battleBool)
 	{
-		battleChance = Math.floor(Math.random() * 1);
+		battleChance = Math.floor(Math.random() * 100);
 		if(battleChance == 0)
 		{
 			battleBool = true;
 			scene2 = battleSetup();
-			scene1.visible = false;
+			currentScene.visible = false;
 			scene2.visible = true;
 			en = enemy();
 			scene2.addChild(en);

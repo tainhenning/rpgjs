@@ -1,4 +1,4 @@
-function player(user,scene, x, y)
+function player(user, x, y)
 {
 	playerHealth = 50;
 	playerAttack = 1;

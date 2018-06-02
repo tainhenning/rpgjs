@@ -39,7 +39,7 @@ function battleMenuMovement()
 				pHealth.text = playerHealth.toString();
 				if(enemyHealth == 0)
 				{
-					scene1.visible = true;
+					currentScene.visible = true;
 					app.stage.removeChild(scene2);
 					battleBool = false;
 				}
@@ -73,7 +73,7 @@ function battleMenuMovement()
 			if(executed == true)
 			{
 				executed = false;
-				scene1.visible = true;
+				currentScene.visible = true;
 				app.stage.removeChild(scene2);
 				battleBool = false;
 			}
