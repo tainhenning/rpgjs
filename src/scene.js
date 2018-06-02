@@ -1,4 +1,4 @@
-function defineScene(grid, leftScene, rightScene, upScene, downScene, characterPosX, characterPosY)
+function defineScene(grid, leftScene, rightScene, upScene, downScene, characterPosX, characterPosY, biasX, biasY)
 {
 	let scene = new PIXI.DisplayObjectContainer();
 	scene.grid = grid;
@@ -8,8 +8,11 @@ function defineScene(grid, leftScene, rightScene, upScene, downScene, characterP
 	scene.downScene = downScene;
 	scene.cPosX = characterPosX;
 	scene.cPosY = characterPosY;
-	loadGrid(grid, scene);
+	scene.biasX = biasX;
+	scene.biasY = biasY;
+	loadGrid(scene);
 	scene.vx = 0;
 	scene.vy = 0;
+	scene.visible = false;
 	return scene;
 }

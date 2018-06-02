@@ -12,12 +12,12 @@ function setup()
 	battleBool = false;
 	let scene3, scene1;
 	sprite = player(sprite, (1000 - 32)/2, (1000 - 32)/2);
-	scene3 = defineScene(grid2, null, null, null, null, 500, 250);
-	scene1 = defineScene(grid, null, scene3, null, null, (window.innerWidth - 32)/2, (window.innerHeight - 32)/2);
+	scene3 = defineScene(grid2, null, null, null, null, 500, 250, 432, -350);
+	scene1 = defineScene(grid, null, scene3, null, null, (1000 - 32)/2, (1000 - 32)/2, -232, -350);
 	scene3.leftScene = scene1;
 	scene1.addChild(sprite);
 
-	scene3.visible = false;
+	scene1.visible = true;
 
 	mainMenu = mainMenuSetup();
 
@@ -46,8 +46,8 @@ function play(delta)
 
 	if((sprite.vx != 0 || sprite.vy != 0) && !battleBool)
 	{
-		battleChance = Math.floor(Math.random() * 100);
-		if(battleChance == 0)
+		battleChance = Math.floor(Math.random() * 1);
+		if(battleChance == 1)
 		{
 			battleBool = true;
 			scene2 = battleSetup();

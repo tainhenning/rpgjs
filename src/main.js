@@ -7,11 +7,9 @@ let type = "WebGL",
 let left = keyboard(65),
 	up = keyboard(87),
 	right = keyboard(68),
-	down = keyboard(83);
-	
+	down = keyboard(83),
 	mUp = keyboard(87),
 	mDown = keyboard(83),
-
 	tab = keyboard(9),
 	spacebar = keyboard(32);
 let app = new PIXI.Application(

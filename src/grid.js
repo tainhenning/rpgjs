@@ -1,6 +1,9 @@
 
-function loadGrid(gGrid, scene)
+function loadGrid(scene)
 {
+	gGrid = scene.grid;
+	biasX = scene.biasX;
+	biasY = scene.biasY;
 	for(var i = 0; i < gGrid.length; i++)
 	{
 		for(var j = 0; j < gGrid[i].length; j++)
@@ -9,8 +12,8 @@ function loadGrid(gGrid, scene)
 			{
 				let id = PIXI.loader.resources["./src/lib/floorsheet.json"].textures; 		
 				let wall = new Sprite(id["floor_vines0.png"]);
-				wall.y = 32 * i;
-				wall.x = 32 * j;	
+				wall.y = (32 * i) + biasY;
+				wall.x = (32 * j) + biasX;	
 				wall.width = 32;
 				wall.height = 32;
 				scene.addChild(wall);
@@ -20,8 +23,8 @@ function loadGrid(gGrid, scene)
 			{
 				let id = PIXI.loader.resources["./src/lib/floorsheet.json"].textures; 		
 				let floor = new Sprite(id["crystal_floor2.png"]);
-				floor.y = 32 * i;
-				floor.x = 32 * j;	
+				floor.y = (32 * i) + biasY;
+				floor.x = (32 * j) + biasX;	
 				floor.width = 32;
 				floor.height = 32;
 				scene.addChild(floor);
@@ -40,10 +43,10 @@ function wallDetection(scene)
 	sprite.y += sprite.vy;
 	scene.x += scene.vx;
 	scene.y += scene.vy;
-	let cgx = Math.ceil(sprite.x/32);
-	let cgy = Math.ceil(sprite.y/32);
-	let fgx = Math.floor(sprite.x/32);
-	let fgy = Math.floor(sprite.y/32);
+	let cgx = Math.ceil((sprite.x - scene.biasX)/32);
+	let cgy = Math.ceil((sprite.y - scene.biasY)/32);
+	let fgx = Math.floor((sprite.x - scene.biasX)/32);
+	let fgy = Math.floor((sprite.y- scene.biasY)/32);
 	if(currentGrid[fgy][fgx] == 1 || currentGrid[cgy][fgx] == 1 || currentGrid[cgy][cgx] == 1 || currentGrid[fgy][cgx] == 1) 
 	{
 		sprite.x = prevx;
@@ -70,7 +73,7 @@ function wallDetection(scene)
 		sprite.vy = 0;
 		sprite.x = (1000 - 32)/2;
 		sprite.y = (1000 - 32)/2;
-		sprite.playAnimation([0,1]);
+		sprite.stopAnimation();
 
 		scene.rightScene.addChild(sprite);
 		currentScene = scene.rightScene;
@@ -90,7 +93,7 @@ function wallDetection(scene)
 		sprite.vy = 0;
 		sprite.x = (1000 - 32)/2;
 		sprite.y = (1000 - 32)/2;
-		sprite.playAnimation([0,1]);
+		sprite.stopAnimation();
 
 		scene.leftScene.addChild(sprite);
 		currentScene = scene.leftScene;
