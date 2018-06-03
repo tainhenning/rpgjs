@@ -1,9 +1,9 @@
 let currentGrid, battleBool, mainMenuPosition, currentScene, canTalk, currentNPC;
 highlight = new PIXI.TextStyle({
-	fill: "white"
+	fill: "white", fontSize: 30
 });
 nonhighlight = new PIXI.TextStyle({
-	fill: "black"
+	fill: "black", fontSize: 26
 });
 function setup()
 {

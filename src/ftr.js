@@ -22,7 +22,7 @@ function getFtrText(page)
 	switch(page)
 	{
 		case 1:
-			return "How it goes my mans, welcome to my game, tab is to exit,\nspacebar is to select, hope you enjoy";
+			return "How it goes my mans, welcome to my game, hope you enjoy";
 		case 2:
 			return "This is the second page";
 		case 3:

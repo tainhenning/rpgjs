@@ -92,7 +92,7 @@ function playerMovement(user, scene)
 		}
 	};
 
-	tab.press = () => {
+	q.press = () => {
 		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
 			mainMenu.visible = true;

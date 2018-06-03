@@ -2,11 +2,18 @@ function dialogSetup()
 {
 	var dialog = new PIXI.DisplayObjectContainer();
 	var dialogBox = new PIXI.Graphics();
+	var dialogBox2 = new PIXI.Graphics();
 
-	dialogBox.beginFill(0x343434);
+	dialogBox.beginFill(0xffffff);
 	dialogBox.drawRect(0,550,1000,350);
 	dialogBox.endFill();
 	dialog.addChild(dialogBox);
+
+	dialogBox2.beginFill(0xfff);
+	dialogBox2.drawRect(5,555, 990,340);
+	dialogBox2.endFill();
+	
+	dialog.addChild(dialogBox2);
 
 	dialogText = new PIXI.Text("test", highlight);
 	dialogText.position.set(50, 600);

@@ -2,24 +2,31 @@ function mainMenuSetup()
 {
 	var menu = new PIXI.DisplayObjectContainer();
 	var menuBox = new PIXI.Graphics();
+	var menuBox2 = new PIXI.Graphics();
 
-	menuBox.beginFill(0xf44242);
+
+	menuBox.beginFill(0xffffff);
 	menuBox.drawRect(0,0,(25*32)/5,(25*32)/5);
 	menuBox.endFill();
 
+	menuBox2.beginFill(0xfff);
+	menuBox2.drawRect(5,5,(25*32)/5 -10,(25*32)/5 -10);
+	menuBox2.endFill();
+
 	statusText = new PIXI.Text("Status", highlight);
-	statusText.position.set(5,10);
+	statusText.position.set(10,15);
 
 	itemsText = new PIXI.Text("Items", nonhighlight);
-	itemsText.position.set(5,40);
+	itemsText.position.set(10,45);
 
 	equipText = new PIXI.Text("Equip", nonhighlight);
-	equipText.position.set(5,70);
+	equipText.position.set(10,75);
 
 	saveText = new PIXI.Text("Save", nonhighlight);
-	saveText.position.set(5,100);
+	saveText.position.set(10,105);
 
 	menu.addChild(menuBox);
+	menu.addChild(menuBox2);
 	menu.addChild(saveText);
 	menu.addChild(equipText);
 	menu.addChild(itemsText);
@@ -37,20 +44,27 @@ function statusBoxSetup()
 {
 	statusContainer = new PIXI.DisplayObjectContainer();
 	box = new PIXI.Graphics();
-	box.beginFill(0x000008);
-	box.drawRect((25*32)/5,0,500,500);
+	box2 = new PIXI.Graphics();
+
+	box.beginFill(0xffffff);
+	box.drawRect((25*32)/5 + 5,0,500,500);
 	box.endFill();
 	
+	box2.beginFill(0xfff);
+	box2.drawRect((25*32)/5 + 10,5,490,490);
+	box2.endFill();
+
 	playerHealthText = new PIXI.Text("Health: " + getPlayerHealth().toString(), highlight);
-	playerHealthText.position.set((25*32)/5 + 5, 10);
+	playerHealthText.position.set((25*32)/5 + 25, 20);
 
 	playerAttackText = new PIXI.Text("Attack: " + getPlayerAttack().toString(), highlight);
-	playerAttackText.position.set((25*32)/5 + 5, 40);
+	playerAttackText.position.set((25*32)/5 + 25, 50);
 
 	playerDefenseText = new PIXI.Text("Defense: " + getPlayerDefense().toString(), highlight);
-	playerDefenseText.position.set((25*32)/5 + 5, 70);
+	playerDefenseText.position.set((25*32)/5 + 25, 80);
 
 	statusContainer.addChild(box);
+	statusContainer.addChild(box2);
 	statusContainer.addChild(playerHealthText);
 	statusContainer.addChild(playerAttackText);
 	statusContainer.addChild(playerDefenseText);

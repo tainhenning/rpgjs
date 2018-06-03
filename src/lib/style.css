@@ -1,1 +1,7 @@
-* {padding: 0; width: 1000px; margin: 0 auto; overflow: hidden;}
+* {
+	padding: 0; 
+	width: 1000px; 
+	margin: 0 auto; 
+	overflow: hidden; 
+	background-color: orange;
+}

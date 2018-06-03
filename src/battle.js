@@ -12,32 +12,40 @@ function battleSetup(scene)
 	executed = false;
 	scene = new PIXI.DisplayObjectContainer();
 	textBox = new PIXI.Graphics();
+	commandBox = new PIXI.Graphics();
+	commandBox2 = new PIXI.Graphics();
+
+
 	textBox.beginFill(0x000000);
 	textBox.drawRect(0,(25*32) - (25*32)/3,25*32,(25*32)/3);
 	textBox.endFill();
 
-	commandBox = new PIXI.Graphics();
-	commandBox.beginFill(0xfff);
+	commandBox.beginFill(0xffffff);
 	commandBox.drawRect(0,(25*32) - (25*32)/3,25*16,(25*32)/3);
 	commandBox.endFill();
 
+	commandBox2.beginFill(0xfff);
+	commandBox2.drawRect(5,(25*32) - (25*32)/3 + 5,25*16 - 10,(25*32)/3 - 10);
+	commandBox2.endFill();
+
 	fight = new PIXI.Text("Fight", nonhighlight);
-	fight.position.set(50,(25*32) - (25*32)/3 + 5);
+	fight.position.set(10,(25*32) - (25*32)/3 + 5);
 
 	defend = new PIXI.Text("Defend", nonhighlight);
-	defend.position.set(50,(25*32) - (25*32)/3 + 35);
+	defend.position.set(10,(25*32) - (25*32)/3 + 35);
 
 	item = new PIXI.Text("Item", nonhighlight);
-	item.position.set(50,(25*32) - (25*32)/3 + 65);
+	item.position.set(10,(25*32) - (25*32)/3 + 65);
 
 	run = new PIXI.Text("Run", nonhighlight);
-	run.position.set(50,(25*32) - (25*32)/3 + 95);
+	run.position.set(10,(25*32) - (25*32)/3 + 95);
 
 	highlighted(fight);
 	positionSelected = 1;
 
 	scene.addChild(textBox);
 	scene.addChild(commandBox);
+	scene.addChild(commandBox2);
 	scene.addChild(fight);
 	scene.addChild(defend);
 	scene.addChild(item);
