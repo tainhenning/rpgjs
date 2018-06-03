@@ -1,5 +1,4 @@
-let currentGrid, battleBool, mainMenuPosition, currentScene;
-
+let currentGrid, battleBool, mainMenuPosition, currentScene, canTalk, currentNPC;
 highlight = new PIXI.TextStyle({
 	fill: "white"
 });
@@ -8,22 +7,28 @@ nonhighlight = new PIXI.TextStyle({
 });
 function setup()
 {
-	
+	canTalk = false;
+	currentNPC = 0;
+	b = new Bump(PIXI);
 	battleBool = false;
 	let scene3, scene1;
-	sprite = player(sprite, (1000 - 32)/2, (1000 - 32)/2);
 	scene3 = defineScene(grid2, null, null, null, null, 500, 250, 432, -350);
 	scene1 = defineScene(grid, null, scene3, null, null, (1000 - 32)/2, (1000 - 32)/2, -232, -350);
 	scene3.leftScene = scene1;
+	
+	sprite = player(sprite, (1000 - 32)/2, (1000 - 32)/2);
 	scene1.addChild(sprite);
 
 	scene1.visible = true;
 
 	mainMenu = mainMenuSetup();
 
+	dialog = dialogSetup();
+
 	app.stage.addChild(scene3);
 	app.stage.addChild(scene1);
 	app.stage.addChild(mainMenu);
+	app.stage.addChild(dialog);
 
 	currentScene = scene1;
 	state = play;
@@ -40,9 +45,9 @@ function play(delta)
 	if(!battleBool)
 	{
 		playerMovement(sprite,currentScene);
+		collisionDetection(currentScene);
+		activeDialogText();
 	}
-
-	wallDetection(currentScene);
 
 	if((sprite.vx != 0 || sprite.vy != 0) && !battleBool)
 	{
@@ -70,7 +75,7 @@ function play(delta)
 	}
 	if(battleBool)
 		battleMenuMovement();
-	if(menu.visible){
+	if(mainMenu.visible){
 		mainMenuMovement();
 	}
 }

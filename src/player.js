@@ -20,7 +20,7 @@ function player(user, x, y)
 function playerMovement(user, scene)
 {
 	left.press = () => {
-		if(!mainMenu.visible && !battleBool)
+		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
 			scene.vx = 2;
 			scene.vy = 0;
@@ -39,7 +39,7 @@ function playerMovement(user, scene)
 	};
 
 	up.press = () => {
-		if(!mainMenu.visible && !battleBool)
+		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
 			scene.vy = 2;
 			user.vy = -2;
@@ -56,7 +56,7 @@ function playerMovement(user, scene)
 		}
 	};
 	right.press = () => {
-		if(!mainMenu.visible && !battleBool)
+		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
 			scene.vx = -2;
 			user.vx = 2;
@@ -73,7 +73,7 @@ function playerMovement(user, scene)
 		}
 	};
 	down.press = () => {
-		if(!mainMenu.visible && !battleBool)
+		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
 			user.vy = 2;
 			user.vx = 0;
@@ -90,8 +90,9 @@ function playerMovement(user, scene)
 		  user.stopAnimation();
 		}
 	};
+
 	tab.press = () => {
-		if(!mainMenu.visible && !battleBool)
+		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
 			mainMenu.visible = true;
 		}
@@ -102,6 +103,17 @@ function playerMovement(user, scene)
 		else
 		{
 			mainMenu.visible = false;
+		}
+	};
+
+	spacebar.press = () => {
+		if(!dialog.visible && !battleBool && !mainMenu.visible && canTalk)
+		{
+			dialog.visible = true;
+		}
+		else
+		{
+			dialog.visible = false;
 		}
 	};
 }

@@ -1,7 +1,7 @@
 function mainMenuSetup()
 {
-	menu = new PIXI.DisplayObjectContainer();
-	menuBox = new PIXI.Graphics();
+	var menu = new PIXI.DisplayObjectContainer();
+	var menuBox = new PIXI.Graphics();
 
 	menuBox.beginFill(0xf44242);
 	menuBox.drawRect(0,0,(25*32)/5,(25*32)/5);

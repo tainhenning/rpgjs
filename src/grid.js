@@ -19,7 +19,7 @@ function loadGrid(scene)
 				scene.addChild(wall);
 
 			}
-			else if(gGrid[i][j] == 0)
+			else if(gGrid[i][j] == 0 || gGrid[i][j] == 11)
 			{
 				let id = PIXI.loader.resources["./src/lib/floorsheet.json"].textures; 		
 				let floor = new Sprite(id["crystal_floor2.png"]);
@@ -29,10 +29,18 @@ function loadGrid(scene)
 				floor.height = 32;
 				scene.addChild(floor);
 			}
+			else if(gGrid[i][j] == 10)
+			{
+				posY = (32 * i) + biasY;
+				posX = (32 * j) + biasX;
+				fighterNPC = ftr(posX, posY);
+				scene.addChild(fighterNPC);
+
+			}
 		}
 	}
 }
-function wallDetection(scene)
+function collisionDetection(scene)
 {
 	currentGrid = scene.grid;
 	let prevx = sprite.x;
@@ -97,5 +105,26 @@ function wallDetection(scene)
 
 		scene.leftScene.addChild(sprite);
 		currentScene = scene.leftScene;
+	}
+	if(currentGrid[fgy][fgx] == 10 || currentGrid[cgy][fgx] == 10 || currentGrid[cgy][cgx] == 10 || currentGrid[fgy][cgx] == 10) 
+	{
+		sprite.x = prevx;
+		sprite.y = prevy;
+		sprite.vy = 0;
+		sprite.vx = 0;
+		scene.x = prevsx;
+		scene.y = prevsy;
+		scene.vx = 0;
+		scene.vy = 0;
+	}
+	if(currentGrid[fgy][fgx] == 11 || currentGrid[cgy][fgx] == 11 || currentGrid[cgy][cgx] == 11 || currentGrid[fgy][cgx] == 11) 
+	{
+		canTalk = true;
+		currentNPC = 11; 
+	}
+	else
+	{
+		canTalk = false;
+		currentNPC = 0;
 	}
 }

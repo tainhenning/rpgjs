@@ -1,10 +1,7 @@
-
 let gMax, gMin, reverseFighter;
 reverseFighter = false;
-function ftr(posx, posy, max, min, velx, vely)
+function ftr(posx, posy)
 {
-	gMax = max;
-	gMin = min;
 	let obj = u.sprite(
 	[
 		"ftr1_fr1.gif", "ftr1_fr2.gif",
@@ -13,31 +10,11 @@ function ftr(posx, posy, max, min, velx, vely)
 		"ftr1_bk1.gif", "ftr1_bk2.gif"
 	]
 	, posx, posy);
-	obj.vx = velx;
-	obj.vy = vely;
-
 	obj.playAnimation([4,5]);
 	return obj;
 }
-function fighterMovement(obj)
+
+function getFtrText()
 {
-	if(obj.x == gMax)
-		reverseFighter = fighterMovementLogic(obj);
-	else if(obj.x == gMin)
-		reverseFighter = fighterMovementLogic(obj);
-	if(!reverseFighter)
-	{
-		obj.x += obj.vx;
-	}
-	else
-	{
-		obj.x -= obj.vx;
-	}
-}
-function fighterMovementLogic(obj)
-{
-	if(reverseFighter)
-		{obj.playAnimation([4,5]); return false;}
-	else
-		{obj.playAnimation([2,3]); return true;}
+	return "How it goes my mans, welcome to my game, tab is to exit,\nspacebar is to select, hope you enjoy"
 }
