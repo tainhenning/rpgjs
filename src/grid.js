@@ -79,8 +79,8 @@ function collisionDetection(scene)
 
 		sprite.vx = 0;
 		sprite.vy = 0;
-		sprite.x = (1000 - 32)/2;
-		sprite.y = (1000 - 32)/2;
+		sprite.x = (app.width - 32)/2;
+		sprite.y = (app.height - 32)/2;
 		sprite.stopAnimation();
 
 		scene.rightScene.addChild(sprite);
@@ -99,8 +99,8 @@ function collisionDetection(scene)
 
 		sprite.vx = 0;
 		sprite.vy = 0;
-		sprite.x = (1000 - 32)/2;
-		sprite.y = (1000 - 32)/2;
+		sprite.x = (app.width - 32)/2;
+		sprite.y = (app.height - 32)/2;
 		sprite.stopAnimation();
 
 		scene.leftScene.addChild(sprite);

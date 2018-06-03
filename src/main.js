@@ -15,7 +15,8 @@ let left = keyboard(65),
 	shift = keyboard(16);
 let app = new PIXI.Application(
 	{width: 1000, height: 1000, antialias: true, transparent: false, resolution: 2});
-
+app.width = 1000;
+app.height = 1000;
 app.renderer.backgroundColor = 0x000000;
 app.renderer.view.style.position = "float";
 app.renderer.view.style.display = "block";
