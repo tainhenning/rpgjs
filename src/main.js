@@ -11,9 +11,10 @@ let left = keyboard(65),
 	mUp = keyboard(87),
 	mDown = keyboard(83),
 	tab = keyboard(9),
-	spacebar = keyboard(32);
+	spacebar = keyboard(32),
+	shift = keyboard(16);
 let app = new PIXI.Application(
-	{width: 1000, height: 1000, antialias: true, transparent: false, resolution: 1});
+	{width: 1000, height: 1000, antialias: true, transparent: false, resolution: 2});
 
 app.renderer.backgroundColor = 0x000000;
 app.renderer.view.style.position = "float";

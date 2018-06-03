@@ -46,12 +46,11 @@ function play(delta)
 	{
 		playerMovement(sprite,currentScene);
 		collisionDetection(currentScene);
-		activeDialogText();
 	}
 
 	if((sprite.vx != 0 || sprite.vy != 0) && !battleBool)
 	{
-		battleChance = Math.floor(Math.random() * 1);
+		battleChance = Math.floor(Math.random() * 100);
 		if(battleChance == 1)
 		{
 			battleBool = true;

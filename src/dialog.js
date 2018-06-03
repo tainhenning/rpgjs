@@ -16,12 +16,14 @@ function dialogSetup()
 	dialog.visible = false;
 	return dialog;
 }
-function activeDialogText()
+function activeDialogText(page)
 {
 	console.log(currentNPC);
 	if(currentNPC == 11)
 	{
-		dialogText.text = getFtrText();
+		dialogText.text = getFtrText(page);
+		if(dialogText.text == "qq")
+			dialog.visible = false;
 	}
 	else if(currentNPC == 0)
 	{

@@ -15,6 +15,7 @@ function player(user, x, y)
 	user.height = 32;
 	user.vy = 0;
 	user.vx = 0;
+	speed = 2;
 	return user;
 }
 function playerMovement(user, scene)
@@ -22,9 +23,9 @@ function playerMovement(user, scene)
 	left.press = () => {
 		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
-			scene.vx = 2;
+			scene.vx = speed;
 			scene.vy = 0;
-			user.vx = -2;
+			user.vx = -speed;
 			user.vy = 0;
 			user.playAnimation([2,3]);
 		}
@@ -41,8 +42,8 @@ function playerMovement(user, scene)
 	up.press = () => {
 		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
-			scene.vy = 2;
-			user.vy = -2;
+			scene.vy = speed;
+			user.vy = -speed;
 			user.vx = 0;
 			scene.vx = 0;
 			user.playAnimation([6,7]);
@@ -58,8 +59,8 @@ function playerMovement(user, scene)
 	right.press = () => {
 		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
-			scene.vx = -2;
-			user.vx = 2;
+			scene.vx = -speed;
+			user.vx = speed;
 			user.vy = 0;
 			scene.vy = 0;
 			user.playAnimation([4,5]);
@@ -75,9 +76,9 @@ function playerMovement(user, scene)
 	down.press = () => {
 		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
-			user.vy = 2;
+			user.vy = speed;
 			user.vx = 0;
-			scene.vy =-2;
+			scene.vy =-speed;
 			scene.vx = 0;
 			user.playAnimation([0,1]);
 		}
@@ -107,14 +108,25 @@ function playerMovement(user, scene)
 	};
 
 	spacebar.press = () => {
+
 		if(!dialog.visible && !battleBool && !mainMenu.visible && canTalk)
 		{
+			pageNumber = 1;
+			activeDialogText(pageNumber);
 			dialog.visible = true;
 		}
-		else
+		else if(dialog.visible)
 		{
-			dialog.visible = false;
+			pageNumber++;
+			activeDialogText(pageNumber)
 		}
+	};
+
+	shift.press = () => {
+		if(speed == 2)
+			speed = 6;
+		else
+			speed = 2;
 	};
 }
 

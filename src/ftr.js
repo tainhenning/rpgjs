@@ -13,8 +13,21 @@ function ftr(posx, posy)
 	obj.playAnimation([4,5]);
 	return obj;
 }
-
-function getFtrText()
+function getFtrTextAmount()
 {
-	return "How it goes my mans, welcome to my game, tab is to exit,\nspacebar is to select, hope you enjoy"
+	return 5;
+}
+function getFtrText(page)
+{
+	switch(page)
+	{
+		case 1:
+			return "How it goes my mans, welcome to my game, tab is to exit,\nspacebar is to select, hope you enjoy";
+		case 2:
+			return "This is the second page";
+		case 3:
+			return "And this is the third page";
+		case 4:
+			return "qq";
+	}
 }
