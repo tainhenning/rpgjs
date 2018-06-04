@@ -17,7 +17,7 @@ function battleSetup(scene)
 
 
 	textBox.beginFill(0xffffff);
-	textBox.drawRect(app.width - 25*32,app.height - (25*32)/3,25*32,(25*32)/3);
+	textBox.drawRoundedRect(app.width - 25*32,app.height - (25*32)/3,25*32,(25*32)/3,10);
 	textBox.endFill();
 
 	textBox2.beginFill(0xfff);
@@ -25,7 +25,7 @@ function battleSetup(scene)
 	textBox2.endFill();
 
 	commandBox.beginFill(0xffffff);
-	commandBox.drawRect(0,app.height - (25*32)/3,25*16,(25*32)/3);
+	commandBox.drawRoundedRect(0,app.height - (25*32)/3,25*16,(25*32)/3,10);
 	commandBox.endFill();
 
 	commandBox2.beginFill(0xfff);
@@ -252,7 +252,7 @@ function actionDescribeBox()
 
 	var mainBox = new PIXI.Graphics();
 	mainBox.beginFill(0xffffff);
-	mainBox.drawRect(10,10,app.width-20,(25*32)/6-20);
+	mainBox.drawRoundedRect(10,10,app.width-20,(25*32)/6-20,10);
 	mainBox.endFill();
 
 	var mainBox2 = new PIXI.Graphics();

@@ -5,18 +5,18 @@ function dialogSetup()
 	var dialogBox2 = new PIXI.Graphics();
 
 	dialogBox.beginFill(0xffffff);
-	dialogBox.drawRect(0,550,1000,350);
+	dialogBox.drawRoundedRect(0,app.height-350,1000,350,10);
 	dialogBox.endFill();
 	dialog.addChild(dialogBox);
 
 	dialogBox2.beginFill(0xfff);
-	dialogBox2.drawRect(5,555, 990,340);
+	dialogBox2.drawRect(5,app.height-345, 990,340);
 	dialogBox2.endFill();
 	
 	dialog.addChild(dialogBox2);
 
 	dialogText = new PIXI.Text("test", highlight);
-	dialogText.position.set(50, 600);
+	dialogText.position.set(50,app.height-300);
 	dialog.addChild(dialogText);
 
 
