@@ -1,5 +1,6 @@
 function player(user, x, y)
 {
+	playerMaxHealth = 50;
 	playerHealth = 50;
 	playerAttack = 1;
 	playerDefense = 4;
@@ -128,19 +129,4 @@ function playerMovement(user, scene)
 		else
 			speed = 2;
 	};
-}
-
-function getPlayerHealth()
-{
-	return playerHealth;
-}
-
-function getPlayerAttack()
-{
-	return playerAttack;
-}
-
-function getPlayerDefense()
-{
-	return playerDefense;
 }

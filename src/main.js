@@ -14,7 +14,7 @@ let left = keyboard(65),
 	spacebar = keyboard(32),
 	shift = keyboard(16);
 let app = new PIXI.Application(
-	{width: 1000, height: 1000, antialias: true, transparent: false, resolution: 2});
+	{width: 1000, height: 1000, antialias: true, transparent: false, resolution: 3});
 app.width = 1000;
 app.height = 1000;
 app.renderer.backgroundColor = 0x000000;

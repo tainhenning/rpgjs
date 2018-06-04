@@ -7,81 +7,6 @@ function delighted(text)
 {
 	text.style = nonhighlight;
 }
-function battleMenuMovement()
-{
-	mUp.press = () => {
-		positionSelected--;
-	}
-	mDown.press = () => {
-		positionSelected++;
-	}
-
-	spacebar.press = () => {
-		executed = true;
-	}
-	if(positionSelected == 0)
-		positionSelected = 4;
-	if(positionSelected == 5)
-		positionSelected = 1;
-	switch(positionSelected)
-	{
-		case 1:
-			highlighted(fight);
-			delighted(defend);
-			delighted(item);
-			delighted(run);
-			if(executed == true)
-			{
-				executed = false;
-				enemyHealth--;
-				eHealth.text = enemyHealth.toString();
-				enemyTurn();
-				pHealth.text = playerHealth.toString();
-				if(enemyHealth == 0)
-				{
-					currentScene.visible = true;
-					app.stage.removeChild(scene2);
-					battleBool = false;
-				}
-			}
-			break;
-		case 2:
-			highlighted(defend);
-			delighted(fight);
-			delighted(item);
-			delighted(run);
-			if(executed == true)
-			{
-				executed = false;
-				playerDefense += 4;
-				enemyTurn();
-				playerDefense = 0;
-				pHealth.text = playerHealth.toString();
-			}
-			break;
-		case 3:
-			highlighted(item);
-			delighted(defend);
-			delighted(fight);
-			delighted(run);
-			break;
-		case 4:
-			highlighted(run);
-			delighted(defend);
-			delighted(item);
-			delighted(fight);
-			if(executed == true)
-			{
-				executed = false;
-				currentScene.visible = true;
-				app.stage.removeChild(scene2);
-				battleBool = false;
-			}
-			break;
-		default:
-			break;
-	}
-}
 function mainMenuMovement()
 {
 	execute = false; 
@@ -136,8 +61,4 @@ function mainMenuMovement()
 			}
 		}
 	}
-}
-function statusBoxMovement()
-{
-
 }

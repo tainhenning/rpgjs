@@ -1,6 +1,7 @@
 let currentGrid, battleBool, mainMenuPosition, currentScene, canTalk, currentNPC;
 function setup()
 {
+	lastBattleDialogBoxOpened = 0;
 	canTalk = false;
 	currentNPC = 0;
 	b = new Bump(PIXI);

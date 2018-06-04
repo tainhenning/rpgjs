@@ -24,9 +24,9 @@ function getFtrText(page)
 		case 1:
 			return "How it goes my mans, welcome to my game, hope you enjoy";
 		case 2:
-			return "This is the second page";
+			return "Press q to open the menu and go back";
 		case 3:
-			return "And this is the third page";
+			return "Press spacebar to select";
 		case 4:
 			return "qq";
 	}

@@ -3,7 +3,8 @@ function mainMenuSetup()
 	var menu = new PIXI.DisplayObjectContainer();
 	var menuBox = new PIXI.Graphics();
 	var menuBox2 = new PIXI.Graphics();
-
+	var playerProfileTexture = new PIXI.Texture.fromImage('./lib/playerProfile.png');
+	var playerProfile = new PIXI.Sprite(playerProfileTexture);
 
 	menuBox.beginFill(0xffffff);
 	menuBox.drawRect(0,0,(25*32)/5,(25*32)/5);
@@ -25,12 +26,15 @@ function mainMenuSetup()
 	saveText = new PIXI.Text("Save", nonhighlight);
 	saveText.position.set(10,105);
 
+
+
 	menu.addChild(menuBox);
 	menu.addChild(menuBox2);
 	menu.addChild(saveText);
 	menu.addChild(equipText);
 	menu.addChild(itemsText);
 	menu.addChild(statusText);
+	menu.addChild(playerProfile);
 
 	mainMenuPosition = 1;
 
@@ -42,9 +46,9 @@ function mainMenuSetup()
 }
 function statusBoxSetup()
 {
-	statusContainer = new PIXI.DisplayObjectContainer();
-	box = new PIXI.Graphics();
-	box2 = new PIXI.Graphics();
+	var statusContainer = new PIXI.DisplayObjectContainer();
+	var box = new PIXI.Graphics();
+	var box2 = new PIXI.Graphics();
 
 	box.beginFill(0xffffff);
 	box.drawRect((25*32)/5 + 5,0,500,500);
@@ -54,20 +58,20 @@ function statusBoxSetup()
 	box2.drawRect((25*32)/5 + 10,5,490,490);
 	box2.endFill();
 
-	playerHealthText = new PIXI.Text("Health: " + getPlayerHealth().toString(), highlight);
-	playerHealthText.position.set((25*32)/5 + 25, 20);
+	statusMenuPlayerHealthText = new PIXI.Text("Health: " + playerHealth.toString() + "/" + playerMaxHealth, highlight);
+	statusMenuPlayerHealthText.position.set((25*32)/5 + 25, 20);
 
-	playerAttackText = new PIXI.Text("Attack: " + getPlayerAttack().toString(), highlight);
-	playerAttackText.position.set((25*32)/5 + 25, 50);
+	var statusMenuPlayerAttackText = new PIXI.Text("Attack: " + playerAttack.toString(), highlight);
+	statusMenuPlayerAttackText.position.set((25*32)/5 + 25, 50);
 
-	playerDefenseText = new PIXI.Text("Defense: " + getPlayerDefense().toString(), highlight);
-	playerDefenseText.position.set((25*32)/5 + 25, 80);
+	var statusMenuPlayerDefenseText = new PIXI.Text("Defense: " + playerDefense.toString(), highlight);
+	statusMenuPlayerDefenseText.position.set((25*32)/5 + 25, 80);
 
 	statusContainer.addChild(box);
 	statusContainer.addChild(box2);
-	statusContainer.addChild(playerHealthText);
-	statusContainer.addChild(playerAttackText);
-	statusContainer.addChild(playerDefenseText);
+	statusContainer.addChild(statusMenuPlayerHealthText);
+	statusContainer.addChild(statusMenuPlayerAttackText);
+	statusContainer.addChild(statusMenuPlayerDefenseText);
 
 	statusContainer.visible = false;
 	return statusContainer;
