@@ -223,8 +223,10 @@ function playerAttacks()
 
 function playerDefends()
 {
+	playerDefense = 3;
 	executed = false;
 	enemyTurn();
+	playerDefense = 0;
 	pHealth.text = "Player HP: "+ playerHealth.toString();
 }
 
@@ -240,6 +242,7 @@ function enemyTurn()
 			break;
 	}
 	viewBattleDialogBox("Enemy attacks for " + enemyAttack.toString());
+	pHealth.text = "Player HP: "+ playerHealth.toString();
 
 }
 

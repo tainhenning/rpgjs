@@ -3,7 +3,7 @@ function player(user, x, y)
 	playerMaxHealth = 50;
 	playerHealth = 50;
 	playerAttack = 1;
-	playerDefense = 4;
+	playerDefense = 0;
 	user = u.sprite(
 	[
 		"scr1_fr1.gif", "scr1_fr2.gif",
