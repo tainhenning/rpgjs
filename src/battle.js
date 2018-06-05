@@ -47,6 +47,13 @@ function battleSetup(scene)
 	highlighted(battleFightText);
 	positionSelected = 1;
 
+	battleBackground = new PIXI.Graphics;
+	battleBackground.beginFill(0x000);
+	battleBackground.drawRect(0,0,app.width,app.height);
+	battleBackground.endFill();
+
+	scene.addChild(battleBackground);
+
 	scene.addChild(textBox);
 	scene.addChild(textBox2);
 	scene.addChild(commandBox);
@@ -60,10 +67,13 @@ function battleSetup(scene)
 }
 function newBattle()
 {
+
+
 	battleBool = true;
 	battleScene = battleSetup();
 	currentScene.visible = false;
 	battleScene.visible = true;
+
 	en = enemy();
 
 	battleDialogBox = actionDescribeBox();
@@ -75,6 +85,7 @@ function newBattle()
 	battleScene.addChild(en);
 	battleScene.addChild(pHealth);
 	battleScene.addChild(battleDialogBox);
+
 	app.stage.addChild(battleScene);
 }
 function enemy(scene)

@@ -11,17 +11,17 @@ function mainMenuSetup()
 	menuBox2.drawRect(5,5,(25*32)/5 -10,(25*32)/5 -10);
 	menuBox2.endFill();
 
-	statusText = new PIXI.Text("Status", highlight);
-	statusText.position.set(10,15);
+	statusText = new PIXI.Text("Stats", highlight);
+	statusText.position.set(10,5);
 
-	itemsText = new PIXI.Text("Items", nonhighlight);
-	itemsText.position.set(10,45);
+	itemsText = new PIXI.Text("Stash", nonhighlight);
+	itemsText.position.set(10,35);
 
 	equipText = new PIXI.Text("Equip", nonhighlight);
-	equipText.position.set(10,75);
+	equipText.position.set(10,65);
 
 	saveText = new PIXI.Text("Save", nonhighlight);
-	saveText.position.set(10,105);
+	saveText.position.set(10,95);
 
 	menu.addChild(menuBox);
 	menu.addChild(menuBox2);

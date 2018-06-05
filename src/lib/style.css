@@ -1,7 +1,19 @@
-* {
+*{
+	background-image: url("./mainbackground.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
 	padding: 0; 
-	width: 1000px; 
+	width: 1000px;
+	height:1000px; 
 	margin: 0 auto; 
 	overflow: hidden; 
-	background-color: orange;
+
+}
+
+@font-face {
+  font-family: '8bit';
+  src:  url('./8bit-webfont.woff2') format('woff2'),
+        url('./8bit-webfont.woff') format('woff'),
+   		url('./8bit-webfont.ttf')  format('truetype');
 }

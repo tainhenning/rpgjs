@@ -22,9 +22,9 @@ function getFtrText(page)
 	switch(page)
 	{
 		case 1:
-			return "How it goes my mans, welcome to my game, hope you enjoy";
+			return "How it goes my mans, welcome to my game...";
 		case 2:
-			return "Press q to open the menu and go back";
+			return "Press q to open the menu and go back...";
 		case 3:
 			return "Press spacebar to select";
 		case 4:

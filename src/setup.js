@@ -28,21 +28,20 @@ function setup()
 	currentScene = scene1;
 	state = play;
 
-	//var logoTexture = PIXI.utils.TextureCache["./src/lib/playerProfile.png"];
-	//var logo = new PIXI.Sprite(logoTexture);
-	//logo.x = app.width/2;
-	//logo.y = app.height/2;
+	uniforms = {}
+	uniforms.time =  {
+		type:"f",
+		value:0
+	}
 
-	//logo.anchor.set(0.5);
-	//app.stage.addChild(logo);
-
+	shaderCode = document.getElementById("shader").innerHTML;
 
 	app.ticker.add(delta => gameLoop(delta))
 }
 
 highlight = new PIXI.TextStyle({
-	fill: "white", fontSize: 30
+	fill: "white", fontFamily: "8bit", fontSize: 50
 });
 nonhighlight = new PIXI.TextStyle({
-	fill: "black", fontSize: 26
+	fill: "black", fontFamily: "8bit", fontSize: 46
 });

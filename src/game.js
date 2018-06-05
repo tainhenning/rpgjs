@@ -4,8 +4,12 @@ function gameLoop(delta)
 }
 function play(delta)
 {
+	simpleShader = new PIXI.AbstractFilter('',shaderCode, uniforms);
+	uniforms.time.value += 0.01;
+
 	currentTime = new Date();
-	currentSecond = currentTime.getSeconds();
+	currentSecond = new Date().getSeconds();
+
 	if(!battleBool)
 	{
 		playerMovement(sprite,currentScene);
@@ -14,13 +18,17 @@ function play(delta)
 
 	if((sprite.vx != 0 || sprite.vy != 0) && !battleBool)
 	{
-		battleChance = Math.floor(Math.random() * 1);
+		battleChance = Math.floor(Math.random() * 100);
 		if(battleChance == 0)
+		{
 			newBattle();
+
+		}
 	}
 	if(battleBool)
 	{
 		battleMenuMovement();
+		battleBackground.filters = [simpleShader];
 
 	}
 	if(mainMenu.visible){
