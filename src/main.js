@@ -88,11 +88,12 @@ let u = new SpriteUtilities(PIXI);
 let b = new Bump(PIXI);
 
 document.body.appendChild(app.view);
-
+PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 loader	.add("./src/lib/sheet.json")
 		.add("./src/lib/floorsheet.json")
 		.add("./src/lib/playerProfile.png")
 		.add("./src/lib/batEnemySheet.json")
+		.add("./src/lib/pixil-frame-0.png")
 		.load(setup);
 
 function zero2D(rows, cols) {

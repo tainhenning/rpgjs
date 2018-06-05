@@ -232,7 +232,7 @@ function actionDescribeBox()
 	var container = new PIXI.DisplayObjectContainer();
 
 	actionDialogText = new PIXI.Text("", highlight);
-	actionDialogText.position.set(25,((25*32)/6-20)/2 -10);
+	actionDialogText.position.set(20,((25*32)/6-20)/2 -20);
 
 	var mainBox = new PIXI.Graphics();
 	mainBox.beginFill(0xffffff);
