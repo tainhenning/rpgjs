@@ -32,7 +32,7 @@ function battleSetup(scene)
 	commandBox2.drawRect(5,app.height - (25*32)/3 + 5,25*16 - 10,(25*32)/3 - 10);
 	commandBox2.endFill();
 
-	battleFightText = new PIXI.Text("Fight", nonhighlight);
+	battleFightText = new PIXI.Text("Attack", nonhighlight);
 	battleFightText.position.set(10,app.height - (25*32)/3 + 5);
 
 	battleDefendText = new PIXI.Text("Defend", nonhighlight);
@@ -69,55 +69,26 @@ function newBattle()
 	battleDialogBox = actionDescribeBox();
 	battleDialogBox.visible = false;
 
-	eHealth = new PIXI.Text(getEnemyHealth().toString(), highlight);
-	eHealth.position.set(app.width/2,app.height/2+10, 100, 100);
 	pHealth = new PIXI.Text("Player HP: "+ playerHealth.toString(), highlight);
 	pHealth.position.set(app.width/2 - 95,app.height - (25*32)/3 + 5);
 	
 	battleScene.addChild(en);
-	battleScene.addChild(eHealth);
 	battleScene.addChild(pHealth);
 	battleScene.addChild(battleDialogBox);
 	app.stage.addChild(battleScene);
 }
 function enemy(scene)
 {
-	var enemy = new PIXI.Graphics();
-	enemyChance = Math.floor(Math.random() * 1000);
-	if(enemyChance == 1)
-	{
-		enemy.beginFill(0xf49d41);
-		enemyHealth = 5;
-		enemyAttack = 5;
-	}
-	else if(enemyChance == 2)
-	{
-		enemy.beginFill(0xf44242);
-		enemyHealth = 5;
-		enemyAttack = 5;
-	}
-	else if(enemyChance == 3)
-	{
-		enemy.beginFill(0x41d9f4);
-		enemyHealth = 5;
-		enemyAttack = 5;
-	}
-	else if(enemyChance == 4)
-	{
-		enemy.beginFill(0x41f45b);
-		enemyHealth = 5;
-		enemyAttack = 5;
-	}
-	else
-	{
-		enemy.beginFill(0xf441e8);
-		enemyHealth = 5;
-		enemyAttack = 5;
-	}
-	enemy.drawRect(app.width/2-50,app.height/2-100, 100, 100);
-	enemy.endFill();
-
-	return enemy;
+	var bat =  u.sprite(
+	[
+		"enemy1.gif", "enemy2.gif",
+		"enemy3.gif", "enemy4.gif",
+	]
+	, app.width/2 - 108/2, app.height/2 - 126/2);
+	enemyHealth = 5;
+	enemyAttack = 5;
+	bat.playAnimation();
+	return bat;
 }
 
 function getEnemyHealth()
@@ -211,7 +182,6 @@ function playerAttacks()
 {
 	executed = false;
 	enemyHealth--;
-	eHealth.text = enemyHealth.toString();
 
 	viewBattleDialogBox("Player attacks for " + playerAttack.toString());
 

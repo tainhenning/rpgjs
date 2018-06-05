@@ -27,6 +27,16 @@ function setup()
 
 	currentScene = scene1;
 	state = play;
+
+	//var logoTexture = PIXI.utils.TextureCache["./src/lib/playerProfile.png"];
+	//var logo = new PIXI.Sprite(logoTexture);
+	//logo.x = app.width/2;
+	//logo.y = app.height/2;
+
+	//logo.anchor.set(0.5);
+	//app.stage.addChild(logo);
+
+
 	app.ticker.add(delta => gameLoop(delta))
 }
 

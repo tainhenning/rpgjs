@@ -89,7 +89,11 @@ let b = new Bump(PIXI);
 
 document.body.appendChild(app.view);
 
-loader.add("./src/lib/sheet.json").add("./src/lib/floorsheet.json").load(setup);
+loader	.add("./src/lib/sheet.json")
+		.add("./src/lib/floorsheet.json")
+		.add("./src/lib/playerProfile.png")
+		.add("./src/lib/batEnemySheet.json")
+		.load(setup);
 
 function zero2D(rows, cols) {
   var array = [], row = [];

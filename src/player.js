@@ -4,7 +4,7 @@ function player(user, x, y)
 	playerHealth = 50;
 	playerAttack = 1;
 	playerDefense = 0;
-	user = u.sprite(
+	var user = u.sprite(
 	[
 		"scr1_fr1.gif", "scr1_fr2.gif",
 		"scr1_lf1.gif", "scr1_lf2.gif",
@@ -50,6 +50,7 @@ function playerMovement(user, scene)
 			user.playAnimation([6,7]);
 		}
 	};
+
 	up.release = () => {
 		if (!down.isDown && user.vx === 0) {
 		  user.vy = 0;
@@ -57,6 +58,7 @@ function playerMovement(user, scene)
 		  user.stopAnimation();
 		}
 	};
+
 	right.press = () => {
 		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
@@ -67,6 +69,7 @@ function playerMovement(user, scene)
 			user.playAnimation([4,5]);
 		}
 	};
+
 	right.release = () => {
 		if (!left.isDown && user.vy === 0) {
 		  user.vx = 0;
@@ -74,6 +77,7 @@ function playerMovement(user, scene)
 		  user.stopAnimation();
 		}
 	};
+
 	down.press = () => {
 		if(!mainMenu.visible && !battleBool && !dialog.visible)
 		{
@@ -85,6 +89,7 @@ function playerMovement(user, scene)
 		}
 
 	};
+	
 	down.release = () => {
 		if (!up.isDown && user.vx === 0) {
 		  user.vy = 0;

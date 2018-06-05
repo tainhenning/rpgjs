@@ -31,8 +31,15 @@ function loadGrid(scene)
 			}
 			else if(gGrid[i][j] == 10)
 			{
-				posY = (32 * i) + biasY;
-				posX = (32 * j) + biasX;
+				let id = PIXI.loader.resources["./src/lib/floorsheet.json"].textures; 		
+				let floor = new Sprite(id["crystal_floor2.png"]);
+				floor.y = (32 * i) + biasY;
+				floor.x = (32 * j) + biasX;	
+				floor.width = 32;
+				floor.height = 32;
+				scene.addChild(floor);
+				var posY = (32 * i) + biasY;
+				var posX = (32 * j) + biasX;
 				fighterNPC = ftr(posX, posY);
 				scene.addChild(fighterNPC);
 

@@ -1,0 +1,48 @@
+{"frames": {
+
+"enemy1.gif":
+{
+	"frame": {"x":0,"y":0,"w":108,"h":126},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":126},
+	"sourceSize": {"w":108,"h":126},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"enemy2.gif":
+{
+	"frame": {"x":108,"y":0,"w":108,"h":126},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":126},
+	"sourceSize": {"w":108,"h":126},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"enemy3.gif":
+{
+	"frame": {"x":216,"y":0,"w":108,"h":126},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":126},
+	"sourceSize": {"w":108,"h":126},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"enemy4.gif":
+{
+	"frame": {"x":324,"y":0,"w":108,"h":126},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":126},
+	"sourceSize": {"w":108,"h":126},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "batEnemySheet.png",
+	"format": "RGBA8888",
+	"size": {"w":432,"h":126},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e1b95d7aee4e474973f200a00fb5e616:72617c51e3f2538b391f68a1e8a789fc:9f1572014c079017a7cdbe0fc5dd0b6b$"
+}
+}
