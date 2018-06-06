@@ -20,6 +20,12 @@ function setup()
 
 	dialog = dialogSetup();
 
+	mainBackground = new PIXI.Graphics();
+	mainBackground.beginFill(0x34);
+	mainBackground.drawRect(0,0,app.width,app.height);
+	mainBackground.endFill();
+
+	app.stage.addChild(mainBackground);
 	app.stage.addChild(scene3);
 	app.stage.addChild(scene1);
 	app.stage.addChild(mainMenu);
@@ -33,9 +39,15 @@ function setup()
 		type:"f",
 		value:0
 	}
+	uniforms.resolution = {
+		type:"v2",
+		value:[app.width,app.height]
+	}
 
 	shaderCode = document.getElementById("shader").innerHTML;
-
+	shaderTestCode = document.getElementById("shader2").innerHTML;
+	battleEntryAnimationEnabled = false;
+	battleEntryAnimationTimer = 0;
 	app.ticker.add(delta => gameLoop(delta))
 }
 
@@ -43,5 +55,5 @@ highlight = new PIXI.TextStyle({
 	fill: "white", fontFamily: "8bit", fontSize: 50
 });
 nonhighlight = new PIXI.TextStyle({
-	fill: "black", fontFamily: "8bit", fontSize: 46
+	fill: "black", fontFamily: "8bit", fontSize: 50
 });

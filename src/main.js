@@ -87,15 +87,19 @@ let sprite, sprite2, state;
 let u = new SpriteUtilities(PIXI);
 let b = new Bump(PIXI);
 
+sounds.load(["./src/lib/music/battle.mp3", 
+	"./src/lib/music/dungeon.mp3",
+ 	"./src/lib/music/toBattleTransition.mp3",
+ 	"./src/lib/music/playerAttacks.mp3",
+ 	"./src/lib/music/menuCursor.mp3",
+ 	"./src/lib/music/menuSelect.mp3",
+ 	"./src/lib/music/menuBack.mp3",
+ 	"./src/lib/music/menuOpen.mp3"
+ 	]);
 document.body.appendChild(app.view);
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
-loader	.add("./src/lib/sheet.json")
-		.add("./src/lib/floorsheet.json")
-		.add("./src/lib/playerProfile.png")
-		.add("./src/lib/batEnemySheet.json")
-		.add("./src/lib/playerSheet.json")
-		.add("./src/lib/pixil-frame-0.png")
-		.load(setup);
+
+sounds.whenLoaded = soundFinished;
 
 function zero2D(rows, cols) {
   var array = [], row = [];
@@ -103,4 +107,27 @@ function zero2D(rows, cols) {
   while (rows--) array.push(row.slice());
   return array;
 }
+function soundFinished()
+{
+	battleMusic = sounds ["./src/lib/music/battle.mp3"];
+	dungeonMusic = sounds ["./src/lib/music/dungeon.mp3"];
+	toBattleTransitionSound = sounds ["./src/lib/music/toBattleTransition.mp3"];
+	playerAttacksSound = sounds ["./src/lib/music/playerAttacks.mp3"];
+	menuCursorSound = sounds ["./src/lib/music/menuCursor.mp3"];
+	menuSelectSound = sounds ["./src/lib/music/menuSelect.mp3"];
+	menuBackSound = sounds ["./src/lib/music/menuBack.mp3"];
+	menuOpenSound = sounds ["./src/lib/music/menuOpen.mp3"];
 
+	dungeonMusic.play();
+	dungeonMusic.loop = true;
+	battleMusic.volume = 0.8;
+	menuOpenSound.volume = 0.4;
+	console.log("Finished loading sounds!");
+	loader	.add("./src/lib/sheet.json")
+			.add("./src/lib/floorsheet.json")
+			.add("./src/lib/playerProfile.png")
+			.add("./src/lib/batEnemySheet.json")
+			.add("./src/lib/playerSheet.json")
+			.add("./src/lib/pixil-frame-0.png")
+			.load(setup);
+}

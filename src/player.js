@@ -22,7 +22,7 @@ function player(user, x, y)
 function playerMovement(user, scene)
 {
 	left.press = () => {
-		if(!mainMenu.visible && !battleBool && !dialog.visible)
+		if(allowKeyboardMovement())
 		{
 			scene.vx = speed;
 			scene.vy = 0;
@@ -33,15 +33,15 @@ function playerMovement(user, scene)
 	};
 
 	left.release = () => {
-		if (!right.isDown && user.vy === 0) {
+		if (allowKeyboardMovement() && !right.isDown && user.vy === 0) {
 		  user.vx = 0;
 		  scene.vx = 0;
-		  user.stopAnimation();
+		  user.playAnimation([1]);
 		}
 	};
 
 	up.press = () => {
-		if(!mainMenu.visible && !battleBool && !dialog.visible)
+		if(allowKeyboardMovement())
 		{
 			scene.vy = speed;
 			user.vy = -speed;
@@ -52,15 +52,15 @@ function playerMovement(user, scene)
 	};
 
 	up.release = () => {
-		if (!down.isDown && user.vx === 0) {
+		if (allowKeyboardMovement() && !down.isDown && user.vx === 0) {
 		  user.vy = 0;
 		  scene.vy = 0;
-		  user.stopAnimation();
+		  user.playAnimation([7]);
 		}
 	};
 
 	right.press = () => {
-		if(!mainMenu.visible && !battleBool && !dialog.visible)
+		if(allowKeyboardMovement())
 		{
 			scene.vx = -speed;
 			user.vx = speed;
@@ -71,15 +71,15 @@ function playerMovement(user, scene)
 	};
 
 	right.release = () => {
-		if (!left.isDown && user.vy === 0) {
+		if (allowKeyboardMovement() && !left.isDown && user.vy === 0) {
 		  user.vx = 0;
 		  scene.vx = 0;
-		  user.stopAnimation();
+		  user.playAnimation([10]);
 		}
 	};
 
 	down.press = () => {
-		if(!mainMenu.visible && !battleBool && !dialog.visible)
+		if(allowKeyboardMovement())
 		{
 			user.vy = speed;
 			user.vx = 0;
@@ -91,24 +91,27 @@ function playerMovement(user, scene)
 	};
 	
 	down.release = () => {
-		if (!up.isDown && user.vx === 0) {
+		if (allowKeyboardMovement() && !up.isDown && user.vx === 0) {
 		  user.vy = 0;
 		  scene.vy = 0;
-		  user.stopAnimation();
+		  user.playAnimation([4]);
 		}
 	};
 
 	q.press = () => {
-		if(!mainMenu.visible && !battleBool && !dialog.visible)
+		if(!mainMenu.visible && !battleBool && !dialog.visible && !battleEntryAnimationEnabled)
 		{
+			menuOpenSound.play();
 			mainMenu.visible = true;
 		}
 		else if(mainMenu.visible && statusBox.visible)
 		{
+			menuBackSound.play();
 			statusBox.visible = false;
 		}
 		else
 		{
+			menuBackSound.play();
 			mainMenu.visible = false;
 		}
 	};
@@ -134,4 +137,11 @@ function playerMovement(user, scene)
 		else
 			speed = 2;
 	};
+}
+function allowKeyboardMovement()
+{
+	if(!mainMenu.visible && !battleBool && !dialog.visible && !battleEntryAnimationEnabled)
+		return true;
+	else
+		return false;
 }

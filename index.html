@@ -9,7 +9,7 @@
   <script src="./src/lib/spriteUtil.js"></script>
   <script src="./src/lib/bump.js"></script>
 <body>
-
+  <script type="text/javascript" src = "./src/lib/sound.js"></script>
   <script type="text/javascript" src = "./src/game.js"></script>
   <script type="text/javascript" src = "./src/dialog.js"></script>
   <script type="text/javascript" src = "./src/scene.js"></script>
@@ -25,9 +25,24 @@
   <script id = "shader" type = "shader">
   precision mediump float;
     uniform float time;
+
     void main()
     {
-       gl_FragColor = vec4(abs(sin(time)),0.8,0.7,1.0);
+       gl_FragColor = vec4(abs(sin(time * 2.0)-0.4),abs(sin(time * 1.5)),0.6,1.0);
+    }
+  </script>
+  <script id = "shader2" type = "shader2">
+    uniform vec2 resolution;
+    precision mediump float;
+    uniform float time;
+    vec4 red()
+    {
+      return vec4(abs(sin(time * 2.0) + 0.3),abs(sin(time * 0.5) + 0.1),0.2,1.0);
+    }
+    void main()
+    {
+      vec2 st = gl_FragCoord.xy/resolution;
+       gl_FragColor = vec4(abs(sin(time) + st.x),abs(sin(time) + st.y),0.9,0.0);
     }
   </script>
 </body>

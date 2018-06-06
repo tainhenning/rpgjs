@@ -12,11 +12,17 @@ function mainMenuMovement()
 	execute = false; 
 	mUp.press = () => {
 		if(mainMenu.visible && !statusBox.visible)
+		{
 			mainMenuPosition--;
+			menuCursorSound.playFrom(0.6);
+		}
 	}
 	mDown.press = () => {
 		if(mainMenu.visible && !statusBox.visible)
+		{
 			mainMenuPosition++;
+			menuCursorSound.playFrom(0.6);
+		}
 	}
 
 	if(mainMenuPosition == 0)
@@ -57,6 +63,7 @@ function mainMenuMovement()
 			switch(mainMenuPosition)
 			{
 				case 1:
+					menuSelectSound.play();
 					statusBox.visible = true;
 			}
 		}

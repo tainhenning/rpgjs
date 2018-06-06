@@ -68,7 +68,6 @@ function battleSetup(scene)
 function newBattle()
 {
 
-
 	battleBool = true;
 	battleScene = battleSetup();
 	currentScene.visible = false;
@@ -124,10 +123,18 @@ function battleMenuMovement()
 
 
 	mUp.press = () => {
-		positionSelected--;
+		if(!currentScene.visible)
+		{
+			positionSelected--;
+			menuCursorSound.playFrom(0.6);
+		}
 	}
 	mDown.press = () => {
-		positionSelected++;
+		if(!currentScene.visible)
+		{
+			positionSelected++;
+			menuCursorSound.playFrom(0.6);
+		}
 	}
 
 	spacebar.press = () => {
@@ -159,7 +166,10 @@ function battleMenuMovement()
 			delighted(battleItemText);
 			delighted(battleRunText);
 			if(executed == true)
+			{
+				menuSelectSound.play();
 				playerDefends();
+			}
 			break;
 		case 3:
 			highlighted(battleItemText);
@@ -173,7 +183,10 @@ function battleMenuMovement()
 			delighted(battleItemText);
 			delighted(battleFightText);
 			if(executed == true)
+			{
+				menuSelectSound.play();
 				battleExit();
+			}
 			break;
 		default:
 			break;
@@ -182,6 +195,8 @@ function battleMenuMovement()
 
 function battleExit()
 {
+	battleMusic.pause();
+	dungeonMusic.playFrom(0);
 	statusMenuPlayerHealthText.text = "Health: " + playerHealth.toString() + "/" + playerMaxHealth;
 	executed = false;
 	currentScene.visible = true;
@@ -193,7 +208,7 @@ function playerAttacks()
 {
 	executed = false;
 	enemyHealth--;
-
+	playerAttacksSound.playFrom(0.7);
 	viewBattleDialogBox("Player attacks for " + playerAttack.toString());
 
 	pHealth.text = "Player HP: "+ playerHealth.toString();
