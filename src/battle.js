@@ -212,7 +212,10 @@ function playerAttacks()
 	viewBattleDialogBox("Player attacks for " + playerAttack.toString());
 
 	pHealth.text = "Player HP: "+ playerHealth.toString();
-	
+	monsterDamageSound.loop = true;
+	monsterDamageSound.playFrom(1);
+	monsterDamageSound.playing = true;
+	enemyDamaged = true;
 	if(enemyHealth == 0)
 		battleExit();
 }

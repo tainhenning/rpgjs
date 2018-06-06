@@ -1,4 +1,4 @@
-let currentGrid, battleBool, mainMenuPosition, currentScene, canTalk, currentNPC;
+let currentGrid, battleBool, mainMenuPosition, currentScene, canTalk, currentNPC, en;
 function setup()
 {
 	lastBattleDialogBoxOpened = 0;
@@ -48,6 +48,9 @@ function setup()
 	shaderTestCode = document.getElementById("shader2").innerHTML;
 	battleEntryAnimationEnabled = false;
 	battleEntryAnimationTimer = 0;
+
+
+
 	app.ticker.add(delta => gameLoop(delta))
 }
 

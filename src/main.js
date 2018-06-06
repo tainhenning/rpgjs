@@ -15,12 +15,13 @@ let left = keyboard(65),
 	shift = keyboard(16);
 let app = new PIXI.Application(
 	{width: 1000, height: 1000, antialias: true, transparent: false, resolution: 3});
-app.width = 1000;
-app.height = 1000;
+app.width = window.innerWidth;
+app.height = window.innerHeight;
 app.renderer.backgroundColor = 0x000000;
-app.renderer.view.style.position = "float";
+app.renderer.view.style.position = "absolute";
 app.renderer.view.style.display = "block";
-
+app.renderer.autoResize = true;
+app.renderer.resize(window.innerWidth, window.innerHeight);
 grid = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 		[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 		[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -94,7 +95,9 @@ sounds.load(["./src/lib/music/battle.mp3",
  	"./src/lib/music/menuCursor.mp3",
  	"./src/lib/music/menuSelect.mp3",
  	"./src/lib/music/menuBack.mp3",
- 	"./src/lib/music/menuOpen.mp3"
+ 	"./src/lib/music/menuOpen.mp3",
+ 	"./src/lib/music/monsterDamage.mp3"
+
  	]);
 document.body.appendChild(app.view);
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
@@ -117,12 +120,16 @@ function soundFinished()
 	menuSelectSound = sounds ["./src/lib/music/menuSelect.mp3"];
 	menuBackSound = sounds ["./src/lib/music/menuBack.mp3"];
 	menuOpenSound = sounds ["./src/lib/music/menuOpen.mp3"];
-
+	monsterDamageSound = sounds ["./src/lib/music/monsterDamage.mp3"];
+	monsterDamageSound.playing = false;
+	monsterDamageSound.timePlayed = 0;
 	dungeonMusic.play();
 	dungeonMusic.loop = true;
 	battleMusic.volume = 0.8;
 	menuOpenSound.volume = 0.4;
-	console.log("Finished loading sounds!");
+
+	enemyDamaged = false;
+	timeDamaged = 0.0;
 	loader	.add("./src/lib/sheet.json")
 			.add("./src/lib/floorsheet.json")
 			.add("./src/lib/playerProfile.png")

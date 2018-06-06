@@ -4,13 +4,11 @@ function gameLoop(delta)
 }
 function play(delta)
 {
-	simpleShader = new PIXI.AbstractFilter('',shaderCode, uniforms);
-	testShader = new PIXI.Filter('',shaderTestCode,uniforms);
-	mainBackground.filters = [testShader];
-	uniforms.time.value += 0.01;
-
-	currentTime = new Date();
 	currentSecond = new Date().getSeconds();
+
+	updateShaders();
+	soundManagement();
+	enemyDamageManagement();
 
 	if(battleEntryAnimationEnabled)
 	{
@@ -60,3 +58,43 @@ function play(delta)
 	}
 }
 
+function updateShaders()
+{
+	simpleShader = new PIXI.AbstractFilter('',shaderCode, uniforms);
+	testShader = new PIXI.Filter('',shaderTestCode, uniforms);
+	mainBackground.filters = [testShader];
+	uniforms.time.value += 0.01;
+}
+
+function soundManagement()
+{
+	if(monsterDamageSound.playing)
+	{
+		monsterDamageSound.timePlayed+= 1/60;
+		if(monsterDamageSound.timePlayed > 1.5)
+		{
+			monsterDamageSound.pause();
+			monsterDamageSound.timePlayed = 0;
+		}
+	}
+}
+
+function enemyDamageManagement()
+{
+	if(enemyDamaged)
+	{
+		timeDamaged+=1/60;
+		console.log(timeDamaged);
+		if(timeDamaged > 1.6)
+		{
+			console.log("done");
+			en.playAnimation();
+			timeDamaged = 0.0;
+			enemyDamaged = false;
+		}
+		else if(timeDamaged > 1.2)
+		{
+			en.stopAnimation();
+		}
+	}
+}

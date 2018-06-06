@@ -1,0 +1,22 @@
+{
+  "name": "rpgjs",
+  "version": "1.0.0",
+  "description": "An rpgjs created using PIXI and electron",
+  "main": "loader.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tainhenning/rpgjs.git"
+  },
+  "author": "Tain Henning",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tainhenning/rpgjs/issues"
+  },
+  "homepage": "https://github.com/tainhenning/rpgjs#readme",
+  "dependencies": {
+    "electron": "^2.0.2"
+  }
+}
