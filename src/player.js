@@ -6,14 +6,14 @@ function player(user, x, y)
 	playerDefense = 0;
 	var user = u.sprite(
 	[
-		"scr1_fr1.gif", "scr1_fr2.gif",
-		"scr1_lf1.gif", "scr1_lf2.gif",
-		"scr1_rt1.gif", "scr1_rt2.gif",
-		"scr1_bk1.gif", "scr1_bk2.gif"
+		"playerside1.png", "playerside2.png", "playerside3.png",
+		"playerfront1.png", "playerfront2.png", "playerfront3.png",
+		"playerback3.png", "playerback2.png", "playerback1.png",
+		"playerside21.png", "playerside22.png", "playerside23.png",
 	]
 	, x, y);
 	user.width = 32;
-	user.height = 32;
+	user.height = 48;
 	user.vy = 0;
 	user.vx = 0;
 	speed = 2;
@@ -28,7 +28,7 @@ function playerMovement(user, scene)
 			scene.vy = 0;
 			user.vx = -speed;
 			user.vy = 0;
-			user.playAnimation([2,3]);
+			user.playAnimation([0,2]);
 		}
 	};
 
@@ -47,7 +47,7 @@ function playerMovement(user, scene)
 			user.vy = -speed;
 			user.vx = 0;
 			scene.vx = 0;
-			user.playAnimation([6,7]);
+			user.playAnimation([6,8]);
 		}
 	};
 
@@ -66,7 +66,7 @@ function playerMovement(user, scene)
 			user.vx = speed;
 			user.vy = 0;
 			scene.vy = 0;
-			user.playAnimation([4,5]);
+			user.playAnimation([9,11]);
 		}
 	};
 
@@ -85,7 +85,7 @@ function playerMovement(user, scene)
 			user.vx = 0;
 			scene.vy =-speed;
 			scene.vx = 0;
-			user.playAnimation([0,1]);
+			user.playAnimation([3,5]);
 		}
 
 	};

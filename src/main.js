@@ -93,6 +93,7 @@ loader	.add("./src/lib/sheet.json")
 		.add("./src/lib/floorsheet.json")
 		.add("./src/lib/playerProfile.png")
 		.add("./src/lib/batEnemySheet.json")
+		.add("./src/lib/playerSheet.json")
 		.add("./src/lib/pixil-frame-0.png")
 		.load(setup);
 

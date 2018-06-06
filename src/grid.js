@@ -59,9 +59,9 @@ function collisionDetection(scene)
 	scene.x += scene.vx;
 	scene.y += scene.vy;
 	let cgx = Math.ceil((sprite.x - scene.biasX)/32);
-	let cgy = Math.ceil((sprite.y - scene.biasY)/32);
+	let cgy = Math.ceil((sprite.y + 16 - scene.biasY)/32);
 	let fgx = Math.floor((sprite.x - scene.biasX)/32);
-	let fgy = Math.floor((sprite.y- scene.biasY)/32);
+	let fgy = Math.floor((sprite.y + 16 - scene.biasY)/32);
 	if(currentGrid[fgy][fgx] == 1 || currentGrid[cgy][fgx] == 1 || currentGrid[cgy][cgx] == 1 || currentGrid[fgy][cgx] == 1) 
 	{
 		sprite.x = prevx;

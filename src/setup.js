@@ -7,8 +7,8 @@ function setup()
 	b = new Bump(PIXI);
 	battleBool = false;
 	let scene3, scene1;
-	scene3 = defineScene(grid2, null, null, null, null, (app.width - 32)/2, (app.height - 32)/2, (app.width - 32)/2 - (32 * 1), (app.height - 32)/2 - (32 * 27));
-	scene1 = defineScene(grid, null, scene3, null, null, (app.width - 32)/2, (app.height - 32)/2, (app.width - 32)/2 - (32 * 23), (app.height - 32)/2 - (32 * 28));
+	scene3 = defineScene(grid2, null, null, null, null, (app.width - 32)/2, (app.height - 32)/2, (app.width - 32)/2 - (32 * 1), (app.height - 32)/2 - (32 * 26));
+	scene1 = defineScene(grid, null, scene3, null, null, (app.width - 32)/2, (app.height - 32)/2, (app.width - 32)/2 - (32 * 23), (app.height - 32)/2 - (32 * 26));
 	scene3.leftScene = scene1;
 	
 	sprite = player(sprite, (app.width - 32)/2, (app.height - 32)/2);

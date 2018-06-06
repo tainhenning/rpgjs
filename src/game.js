@@ -18,7 +18,7 @@ function play(delta)
 
 	if((sprite.vx != 0 || sprite.vy != 0) && !battleBool)
 	{
-		battleChance = Math.floor(Math.random() * 1000);
+		battleChance = Math.floor(Math.random() * 1);
 		if(battleChance == 1)
 		{
 			newBattle();
